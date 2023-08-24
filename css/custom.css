@@ -1,7 +1,7 @@
 .image-poke-list{
     width: 150%;
     image-rendering: crisp-edges;
-    margin: -50px -50px -50px -30px;
+    margin: -50px -50px -30px -30px;
     max-width: 180%;
 
 }
@@ -78,7 +78,13 @@
 bacground colors of the targets
 **/
 .bg-target{
-    min-height: 13vh;
+    min-height: 15vh;
+}
+.bg-poke{
+    background-image: url("../img/pk_25.png");
+    background-repeat: no-repeat;
+    background-position: 105% 101%;
+    background-size: 13vh 13vh;
 }
 
 .bg-target-bug{
