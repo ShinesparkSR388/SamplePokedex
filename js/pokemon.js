@@ -20,9 +20,39 @@ const pokemon = function(data){
  */
 const pokedex = function(){
     const max_id_count = 150;
-    const id_increment = 20;
+    const id_increment = 150;
     let id_count = 0;
     let poke_list = [];
+    /**
+     * Utilidades para modal de vista de pokedex
+     */
+    const modal_pokedex = function(poke_){
+        const modal_ = document.querySelector('[sumary]');
+        poke_.addEventListener('click',function(){
+            const modal = document.querySelector('[sumary]');
+            const img_ = document.querySelector('[img-sumary]');
+            modal.classList.remove('sumary-hide');
+            modal.classList.add('sumary-show');
+            setTimeout(()=>{
+                img_.classList.remove('img-hide');
+                img_.classList.add('img-show');
+
+            },500);
+        });
+        modal_.addEventListener('click', function(){
+            const modal = document.querySelector('[sumary]');
+            const img_ = document.querySelector('[img-sumary]');
+            
+            img_.classList.remove('img-show');
+            img_.classList.add('img-hide');
+            setTimeout(()=>{
+            modal.classList.remove('sumary-show');
+            modal.classList.add('sumary-hide');
+            },500);
+        })
+        return poke_;
+    }
+
     const draw_poke_list = function(new_list){
         const container = document.querySelector('[cat-alog]');
         this.id_count = this.id_count + this.id_increment;
@@ -55,10 +85,12 @@ const pokedex = function(){
                 </div>
                 `
             };
-            const fs = document.createElement('div');
-            fs.className = "col-2 bg-target-" + item.primary_type + " bg-target rounded-4 p-3 pb-1 pt-2 pe-0 m-3";
+            let fs = document.createElement('div');
+            fs.className = "col-2 bg-target-" + item.primary_type + " rounded-4 m-3 bg-target ";
             fs.innerHTML = card.innerHTML;
             fs.setAttribute('cards', ' ');
+            fs = modal_pokedex(fs);
+            
             container.appendChild(fs);
         });
         /**
