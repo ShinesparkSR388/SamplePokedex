@@ -86,6 +86,12 @@ bacground colors of the targets
     background-position: 105% 101%;
     background-size: 13vh 13vh;
 }
+.bg-poke-gray{
+    background-image: url("../img/pk_gray.png");
+    background-repeat: no-repeat;
+    background-position: 108.9% -16.5%;
+    background-size: 35vh 35vh;
+}
 
 .bg-target-bug{
     background: linear-gradient(rgb(148, 157, 70) 60%,rgb(188, 197, 110));
