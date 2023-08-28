@@ -1,3 +1,4 @@
+<!--The FontStruction “Pokemon B/W” (https://fontstruct.com/fontstructions/show/563645) by “metax” is licensed under a Creative Commons Attribution license (http://creativecommons.org/licenses/by/3.0/).-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,186 @@
     <link rel="stylesheet" href="./css/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/bootstrap/icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/custom.css">
+    <link rel="stylesheet" href="./css/card_pokedex.css">
+    <link rel="stylesheet" href="./css/fix_x_y.css">
 </head>
 <body data-bs-theme="" class=" bg-poke-gray">
     <div class="sumary sumary-hide" sumary>
-       <img src="./img/HG_summary_2.png" class="img-sumary img-hide" alt="" img-sumary>
+        <div class="bg-desk bg-desk-hide" screen></div>
+        <div class="bg-desk2 bg-desk-hide"screen2></div>
+        <div class="img-sumary img-hide font-pokemon fs-3 pt-0" img-sumary-type>
+            
+            <!--
+                Estructura de las targetas para visualizar informacion
+            -->
+
+            <div class="h-100 w-100 img-1" sumary-1 hidden >
+                <!--
+                    A partir de aqui se organiza la targeta de informacion acerca de..
+                    ademas de la informacion basica.
+                -->
+                <div class="h-100 w-100 f-w-poke">
+                        <div class="-pos-fix x-70 y-1 text-light">
+                            SKILLS
+                        </div>
+                        <img class="img-mini-pokeball -pos-fix x-63 y-8-" src="./img/sprite_pokeball.png " alt=""> 
+                        <span class="-pos-fix x-72- y-7" name-dex>Paco</span>
+                        <div class="-pos-fix x-66 y-10-">
+                            Base Lvl.1
+                        </div>
+                        <div class="d-flex w-55 justify-content-center align-items-center -pos-fix x-52 y-18">
+                            <img class="image-pokedex-card" src="" alt="" img-dex>
+                        </div>
+                        <div class="-pos-fix x-65 y-40-">
+                            Item
+                        </div>
+                        <div class="-pos-fix x-65 y-45" item-dex>
+                            None
+                        </div>
+                        <div class="-pos-fix x-70 y-50 text-light mt-1">
+                            DATA
+                        </div>
+                        <!--
+
+                        -->
+                        <div class="d-flex flex-wrap w-50 -pos-fix x-3- y-5-">
+                            <p class="line-height-0 mt-1" about-dex> ---------- ----------- ------ ----------- ------------
+                            </p>
+                        </div>
+                        <div class="-pos-fix x-3- y-52- text-light">
+                            <p class="line-height-0 m-0 p-0">Dex No.</p>
+                            <p class="line-height-0 m-0 p-0">Name</p>
+                            <p class="line-height-0 m-0 p-0">Types:</p>
+                            <p class="line-height-0 m-0 p-0">2nd</p>
+                            <p class="line-height-0 m-0 p-0">Weight</p>
+                            <p class="line-height-0 m-0 p-0">Base Exp</p>
+                            <p class="-pos-fix x-3- y-80">To Next Lv.</p>
+                        </div>
+                        <div class="-pos-fix x-29- y-52- ">
+                            <p class="line-height-0 m-0 p-0" no-dex>----</p>
+                            <p class="line-height-0 m-0 p-0" name2-dex>----</p>
+                            <div class="tag-type m-0 p-0 h-10 line-height-0 text-light" type-dex>----</div>
+                            <div class="tag-type m-0 p-0 h-10 line-height-0 text-light" type2-dex>----</div>
+                            <p class="line-height-0 m-0 p-0" id-dex>----</p>
+                            <p class="-pos-fix x-28- y-75-" xp>----</p>
+                            <p class="-pos-fix x-28- y-83-"next-dex>----</p>
+                        </div>
+                        <!--
+                            Botones y elementos para acciones
+                        -->
+                        <button class="btn-close2 -pos-fix x-0 y-0 d-flex justify-content-start btn-close2" btn-close></button>
+                        <button class="btn-next-r -pos-fix x-30 y-92- text-light fs-3 d-flex justify-content-start align-items-center" btn-sumary2></button>
+                    </div>
+
+            </div>
+            <div class="h-100 w-100 img-2" sumary-2 hidden>
+                <!--
+                    A partir de aqui se organiza la targeta de stats..
+                    ademas de los movimientos
+                    .
+                -->
+                
+                <div class="h-100 w-100 f-w-poke">
+                        <div class="-pos-fix x-70 y-1 text-light">
+                            BASE STATS
+                        </div>
+                        <img class="img-mini-pokeball -pos-fix x-63 y-8-" src="./img/sprite_pokeball.png " alt=""> 
+                        <span class="-pos-fix x-72- y-7" name-dex2>Paco</span>
+                        <div class="-pos-fix x-66 y-10-">
+                            Base Lvl.1
+                        </div>
+                        <div class="d-flex w-55 justify-content-center align-items-center -pos-fix x-52 y-18">
+                            <img class="image-pokedex-card" src="" alt="" img-dex2>
+                        </div>
+                        <div class="-pos-fix x-65 y-40-">
+                            Item
+                        </div>
+                        <div class="-pos-fix x-65 y-45" item-dex2>
+                            None
+                        </div>
+                        <div class="-pos-fix x-70 y-50 text-light mt-1">
+                            MOVES
+                        </div>
+                        <!--
+
+                        -->
+                        <div class="-pos-fix x-14 y-4 text-light pt-1">
+                            HP
+                        </div>
+                        <div class="-pos-fix x-8 y-11 text-light">
+                            Atack
+                        </div>
+                        <div class="-pos-fix x-8 y-14- text-light pt-1">
+                            Defense
+                        </div>
+                        <div class="-pos-fix x-8 y-18- text-light pt-1">
+                            Sp. Atk
+                        </div>
+                        <div class="-pos-fix x-8 y-23- text-light">
+                            Sp. Def
+                        </div>
+                        <div class="-pos-fix x-8 y-27 text-light pt-1">
+                            Speed
+                        </div>
+
+                        <div class="-pos-fix x-38 y-4 pt-1" hp>
+                            HP
+                        </div>
+                        <div class="-pos-fix x-34 y-11" atk>
+                            Atack
+                        </div>
+                        <div class="-pos-fix x-34 y-14- pt-1" def>
+                            Defense
+                        </div>
+                        <div class="-pos-fix x-34 y-18- pt-1" esp-atk>
+                            Sp. Atk
+                        </div>
+                        <div class="-pos-fix x-34 y-23-" esp-def>
+                            Sp. Def
+                        </div>
+                        <div class="-pos-fix x-34 y-27 pt-1" spd>
+                            Speed
+                        </div>
+                        <!--
+
+                        -->
+                        <div class="-pos-fix x-2 y-33 text-light pt-1">
+                            
+                            Abilities
+                        </div>
+                        <div class="-pos-fix x-24 y-34">
+                            <i class="bi bi-caret-left-fill arrow-h" habiliti-l></i>
+                            <span habiliti-name>$$$$$</span>
+                            <i class="bi bi-caret-right-fill arrow-h" habiliti-r></i>
+                        </div>
+                        <div class="-pos-fix x-2 y-39 pt-1 d-flex flex-wrap w-60 f-w-poke-2">
+                            <p class="line-height-1 m-0 p-0" habiliti-description> ------ --------</p>
+                        </div>
+                        <div class="moves" cont-moves>
+                            <div class="move">
+                                <div class="tag-type m-0 p-0 h-45 w-5 line-height-0 text-light type-grass bg-target-grass">
+                                    grass
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <button class="btn-close2 -pos-fix x-0 y-0 d-flex justify-content-start btn-close2" btn-close></button>
+                        <button class="btn-next-l -pos-fix x-20 y-92- text-light fs-3 d-flex justify-content-start align-items-center" btn-sumary></button>
+
+                </div>
+            </div>
+
+        </div>
+       <div class="l-cover l-cover-close" cover-l>
+            <img src="./img/HG_summary_cover_l.png" class="w-100 h-100" alt="">
+        </div>
+        <div class="r-cover r-cover-close" cover-r>
+            <img src="./img/HG_summary_cover_r.png" class="w-100 h-100" alt="">
+            <span></span>
+        </div>
+
     </div>
     <div class="row mb-2">
         <div class="col-6 p-1 ps-3"></div>
@@ -51,7 +228,6 @@
     </div>
 
     <script src="./js/pokemon.js" type=""></script>
-    <script src="./js/reponsive.js"></script>
-    <script src="./js/modal.js"></script>
+    <script src="./js/reponsive.js" type=""></script>
 </body>
 </html>

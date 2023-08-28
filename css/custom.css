@@ -1,8 +1,8 @@
 .image-poke-list{
-    width: 150%;
-    image-rendering: crisp-edges;
-    margin: -50px -50px -30px -30px;
-    max-width: 180%;
+    width: 70%;
+    image-rendering: pixelated;
+    margin: -20px -20px 0px 0px;
+    max-width: 80%;
 
 }
 
@@ -113,55 +113,55 @@ bacground colors of the targets
     background: linear-gradient(rgb(148, 157, 70) 60%,rgb(188, 197, 110));
 }
 .bg-target-dark{
-    background: linear-gradient(rgb(65, 49, 38),rgb(105, 89, 78));
+    background: linear-gradient(rgb(65, 49, 38) 60%,rgb(105, 89, 78));
 }
 .bg-target-dragon{
-    background: linear-gradient(rgb(57, 133, 145),rgb(97, 173, 185));
+    background: linear-gradient(rgb(57, 133, 145) 60%,rgb(97, 173, 185));
 }
 .bg-target-electric{
-    background: linear-gradient(rgb(194, 159, 70),rgb(234, 199, 110));
+    background: linear-gradient(rgb(194, 159, 70) 60%,rgb(234, 199, 110));
 }
 .bg-target-fairy{
-    background: linear-gradient(rgb(190, 154, 190),rgb(230, 194, 230));
+    background: linear-gradient(rgb(190, 154, 190) 60%,rgb(230, 194, 230));
 }
 .bg-target-fighting{
-    background: linear-gradient(rgb(128, 84, 71),rgb(168, 124, 111));
+    background: linear-gradient(rgb(128, 84, 71) 60%,rgb(168, 124, 111));
 }
 .bg-target-fire{
     background: linear-gradient(rgb(243, 87, 38) 60%,rgb(303, 147, 98));
 }
 .bg-target-flying{
-    background: linear-gradient(rgb(143, 152, 190),rgb(183, 192, 230));
+    background: linear-gradient(rgb(143, 152, 190) 60%,rgb(183, 192, 230));
 }
 .bg-target-ghost{
-    background: linear-gradient(rgb(123, 123, 160),rgb(143, 143, 200));
+    background: linear-gradient(rgb(123, 123, 160) 60%,rgb(143, 143, 200));
 }
 .bg-target-grass{
     background: linear-gradient(rgb(35, 155, 127) 60%,rgb(72, 208, 176));
 }
 .bg-target-ground{
-    background: linear-gradient(rgb(165, 141, 75),rgb(205, 181, 115));
+    background: linear-gradient(rgb(165, 141, 75) 60%,rgb(205, 181, 115));
 }
 .bg-target-ice{
-    background: linear-gradient(rgb(150, 184, 195),rgb(190, 224, 235));
+    background: linear-gradient(rgb(150, 184, 195) 60%,rgb(190, 224, 235));
 }
 .bg-target-normal{
-    background: linear-gradient(rgb(148, 143, 136),rgb(188, 183, 176));
+    background: linear-gradient(rgb(148, 143, 136) 60%,rgb(188, 183, 176));
 }
 .bg-target-poison{
-    background: linear-gradient(rgb(139, 99, 140),rgb(179, 139, 180));
+    background: linear-gradient(rgb(139, 99, 140) 60%,rgb(179, 139, 180));
 }
 .bg-target-psychic{
-    background: linear-gradient(rgb(182, 63, 105),rgb(222, 103, 145));
+    background: linear-gradient(rgb(182, 63, 105) 60%,rgb(222, 103, 145));
 }
 .bg-target-rock{
-    background: linear-gradient(rgb(117, 98, 39),rgb(157, 138, 79));
+    background: linear-gradient(rgb(117, 98, 39) 60%,rgb(157, 138, 79));
 }
 .bg-target-steel{
-    background: linear-gradient(rgb(104, 104, 118),rgb(144, 144, 158));
+    background: linear-gradient(rgb(104, 104, 118) 60%,rgb(144, 144, 158));
 }
 .bg-target-water{
-    background: linear-gradient(rgb(97, 146, 195),rgb(137, 186, 235));
+    background: linear-gradient(rgb(97, 146, 195) 60%,rgb(137, 186, 235));
 }
 
 /*
@@ -179,23 +179,180 @@ Sumary
 }
 
 .sumary-hide{
-    transition: transform .5s;
-    transform: translateY(90%);
+    transition: transform .3s;
+    transform: translateY(100%);
 }
 .sumary-show{
-    transition: transform .5s;
+    transition: transform .3s;
     transform: translateY(0%);
 }
 .img-sumary{
-    width: 65%;
-    max-height: 80%;
-    image-rendering: crisp-edges;
+    height: 70%;
+    width: 37%;
+    min-width: 340px;
+    max-width: 800px;
+    image-rendering: pixelated;
+    border: rgb(0, 0, 0)  1.3vh groove;
+    border-radius: 20px;
+    opacity: 80%;
 }
+.img-1{
+    background-image: url("../img/HG_summary_1.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.img-2{
+    background-image: url("../img/HG_summary_2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
 .img-hide{
-    transition: transform .5s;
-    transform: scale(0,1);
+    transition: transform .2s;
+    transform: scale(0,.8);
 }
 .img-show{
-    transition: transform .5s;
+    transition: transform .1s;
     transform: scale(1,1);
+}
+
+.bg-desk{
+    position: fixed;
+    background-color: #75c1cd;
+    height: 74%;
+    width: 66%;
+    max-width: 1000px;
+    min-width: 470px;
+}.bg-desk2{
+    position: fixed;
+    background-image: url("../img/RITe.gif");
+    height: 74%;
+    width: 66%;
+    max-width: 1000px;
+    min-width: 470px;
+    opacity: 25%;
+}
+
+.bg-desk-hide{
+    transition: transform .3s;
+    transform: scale(.6,1);
+}
+.bg-desk-show{
+    transition: transform .3s;
+    transform: scale(1,1);
+}
+
+/*
+Tapaderas de la pokedex
+*/
+
+.l-cover{ 
+    position: fixed;
+    height: 76%;
+    width: 20%;
+    min-width: 170px;
+    max-width: 400px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+
+.r-cover{ 
+    position: fixed;
+    height: 76%;
+    width: 20%;
+    min-width: 170px;
+    max-width: 400px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+.l-cover-close{
+    transition: transform .3s;
+    transform: translateX(calc(-50% - 10px));
+}
+.r-cover-close{
+    transition: transform .3s;
+    transform: translateX(calc(50% + 10px));
+}
+.l-cover-open{
+    transition: transform .3s;
+    transform: translateX(calc(-150%));
+}
+.r-cover-open{
+    transition: transform .3s;
+    transform: translateX(150%);
+}
+
+.btn-next-r{ 
+    width: 8%;
+    height: 8%;
+    background-color: transparent;
+    border: 0px transparent solid;
+    background-image: url("../img/HG_summary_r.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.btn-next-r:hover{
+    opacity: 80%;
+    animation: pulse 1s;
+    background-image: url("../img/HG_summary_r.gif");
+    
+}
+.btn-next-l{ 
+    width: 8%;
+    height: 8%;
+    background-color: transparent;
+    border: 0px transparent solid;
+    background-image: url("../img/HG_summary_l.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.btn-next-l:hover{
+    opacity: 80%;
+    animation: pulse 1s;
+    background-image: url("../img/HG_summary_l.gif");
+    
+}
+
+.btn-close2{
+    animation: pulse 2s;
+    box-shadow: 0 0 0 2em rgb(120, 0, 0);
+    width: 7%;
+    height: 7%;
+    background-color: rgb(177, 0, 0);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+.arrow-h:hover{
+    cursor: pointer;
+    opacity: 75%;
+    font-size: 3.7vh;
+
+
+}.arrow-h:active{
+    cursor:default;
+    color: white;
+    font-size: 3.5vh;
+}
+.moves{
+    position: fixed;
+    width: 47.65635%;
+    height: 33.1%;
+    top: 52.2%;
+    left: 2.71%;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.move{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../img/HG_summary_move.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 25%;
+    min-height: 5.5vh;
+    line-height: 70%;
+    font-size: 105%;
+    padding-left: 1%;
+    padding-right: 1%;
 }
