@@ -32,17 +32,17 @@
                         </div>
                         <img class="img-mini-pokeball -pos-fix x-63 y-8-" src="./img/sprite_pokeball.png " alt=""> 
                         <span class="-pos-fix x-72- y-7" name-dex>Paco</span>
-                        <div class="-pos-fix x-66 y-10-">
+                        <div class="-pos-fix x-68 y-10-">
                             Base Lvl.1
                         </div>
                         <div class="d-flex w-55 justify-content-center align-items-center -pos-fix x-52 y-18">
                             <img class="image-pokedex-card" src="" alt="" img-dex>
                         </div>
-                        <div class="-pos-fix x-65 y-40-">
-                            Item
+                        <div class="-pos-fix x-63 y-40">
+                            Base happiness 
                         </div>
-                        <div class="-pos-fix x-65 y-45" item-dex>
-                            None
+                        <div class="-pos-fix x-65 y-44-" item-dex>
+                            0
                         </div>
                         <div class="-pos-fix x-70 y-50 text-light mt-1">
                             DATA
@@ -51,8 +51,9 @@
 
                         -->
                         <div class="d-flex flex-wrap w-50 -pos-fix x-3- y-5-">
-                            <p class="line-height-0 mt-1" about-dex> ---------- ----------- ------ ----------- ------------
+                            <p class="line-height-0 mt-2" about-dex> ---------- ----------- ------ ----------- ------------
                             </p>
+                            <p class="line-height-0 mt-2 text-success-emphasis fw-bold" find-it>----</p>
                         </div>
                         <div class="-pos-fix x-3- y-52- text-light">
                             <p class="line-height-0 m-0 p-0">Dex No.</p>
@@ -69,13 +70,12 @@
                             <div class="tag-type m-0 p-0 h-10 line-height-0 text-light" type-dex>----</div>
                             <div class="tag-type m-0 p-0 h-10 line-height-0 text-light" type2-dex>----</div>
                             <p class="line-height-0 m-0 p-0" id-dex>----</p>
-                            <p class="-pos-fix x-28- y-75-" xp>----</p>
+                            <p class="-pos-fix x-28- y-75-" expp>----</p>
                             <p class="-pos-fix x-28- y-83-"next-dex>----</p>
                         </div>
                         <!--
                             Botones y elementos para acciones
                         -->
-                        <button class="btn-close2 -pos-fix x-0 y-0 d-flex justify-content-start btn-close2" btn-close></button>
                         <button class="btn-next-r -pos-fix x-30 y-92- text-light fs-3 d-flex justify-content-start align-items-center" btn-sumary2></button>
                     </div>
 
@@ -88,7 +88,7 @@
                 -->
                 
                 <div class="h-100 w-100 f-w-poke">
-                        <div class="-pos-fix x-70 y-1 text-light">
+                        <div class="-pos-fix x-65 y-1 text-light">
                             BASE STATS
                         </div>
                         <img class="img-mini-pokeball -pos-fix x-63 y-8-" src="./img/sprite_pokeball.png " alt=""> 
@@ -99,13 +99,13 @@
                         <div class="d-flex w-55 justify-content-center align-items-center -pos-fix x-52 y-18">
                             <img class="image-pokedex-card" src="" alt="" img-dex2>
                         </div>
-                        <div class="-pos-fix x-65 y-40-">
-                            Item
+                        <div class="-pos-fix x-63 y-40">
+                            Base happiness 
                         </div>
-                        <div class="-pos-fix x-65 y-45" item-dex2>
-                            None
+                        <div class="-pos-fix x-65 y-44-" item-dex2>
+                            0
                         </div>
-                        <div class="-pos-fix x-70 y-50 text-light mt-1">
+                        <div class="-pos-fix x-65 y-50 text-light mt-1">
                             MOVES
                         </div>
                         <!--
@@ -157,10 +157,10 @@
                         </div>
                         <div class="-pos-fix x-24 y-34">
                             <i class="bi bi-caret-left-fill arrow-h" habiliti-l></i>
-                            <span habiliti-name>$$$$$</span>
+                            <span habiliti-name>----</span>
                             <i class="bi bi-caret-right-fill arrow-h" habiliti-r></i>
                         </div>
-                        <div class="-pos-fix x-2 y-39 pt-1 d-flex flex-wrap w-60 f-w-poke-2">
+                        <div class="-pos-fix x-2 y-39 pt-1 d-flex flex-wrap w-60 f-w-poke-2 h-10 overflow-y-scroll">
                             <p class="line-height-1 m-0 p-0" habiliti-description> ------ --------</p>
                         </div>
                         <div class="moves" cont-moves>
@@ -168,22 +168,47 @@
                                 <div class="tag-type m-0 p-0 h-45 w-5 line-height-0 text-light type-grass bg-target-grass">
                                     grass
                                 </div>
-
                             </div>
-
                         </div>
 
                         <button class="btn-close2 -pos-fix x-0 y-0 d-flex justify-content-start btn-close2" btn-close></button>
                         <button class="btn-next-l -pos-fix x-20 y-92- text-light fs-3 d-flex justify-content-start align-items-center" btn-sumary></button>
-
+                        <!--
+                            Cuadro de informacion de movimiento
+                        -->
+                        <div class="move-info" container info-move hidden>
+                            <div class="row w-100 h-15 mb-1 mt-1">
+                                <div class="col-12 d-flex flex-row align-items-end justify-content-center fs-3 h-100">
+                                    <img class=" h-100" src="" alt="" mini-img>
+                                    <div class="" type-info>----</div>
+                                </div>
+                            </div>
+                            <div class="row h-30 w-100">
+                                <div class="col-8 d-flex flex-column line-height-0 fs-3">
+                                    <span class="pt-1">CATEGORY</span>
+                                    <span class="pt-1">POWER</span>
+                                    <span class="pt-1">ACCURACY</span>
+                                </div>
+                                <div class="col-4 d-flex flex-column line-height-0 fs-3">
+                                    <span class="pt-1" cat>---</span>
+                                    <span class="pt-1" pow>---</span>
+                                    <span class="pt-1" acc>---</span>
+                                </div>
+                            </div>
+                            <div class="row w-100 h-50">
+                                <div class="col-12 d-flex flex-row align-items-end justify-content-center fs-3 h-95">
+                                    <div class="m-0 p-0 pt-1 line-height-2 h-100" desc-info></div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
 
         </div>
-       <div class="l-cover l-cover-close" cover-l>
+       <div class="l-cover l-cover-close" cover-l btn-close>
             <img src="./img/HG_summary_cover_l.png" class="w-100 h-100" alt="">
         </div>
-        <div class="r-cover r-cover-close" cover-r>
+        <div class="r-cover r-cover-close" cover-r btn-close>
             <img src="./img/HG_summary_cover_r.png" class="w-100 h-100" alt="">
             <span></span>
         </div>

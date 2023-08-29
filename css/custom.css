@@ -252,8 +252,13 @@ Tapaderas de la pokedex
     width: 20%;
     min-width: 170px;
     max-width: 400px;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px;
+    border-top-left-radius: 70px;
+    border-bottom-left-radius: 70px;
+}
+.l-cover:hover{
+    border-top: 4px white solid;
+    border-left: 4px white solid;
+    border-bottom: 4px white solid;
 }
 
 .r-cover{ 
@@ -262,8 +267,13 @@ Tapaderas de la pokedex
     width: 20%;
     min-width: 170px;
     max-width: 400px;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
+}
+.r-cover:hover{
+    border-top: 4px white solid;
+    border-right: 4px white solid;
+    border-bottom: 4px white solid;
 }
 .l-cover-close{
     transition: transform .3s;
@@ -313,14 +323,6 @@ Tapaderas de la pokedex
     
 }
 
-.btn-close2{
-    animation: pulse 2s;
-    box-shadow: 0 0 0 2em rgb(120, 0, 0);
-    width: 7%;
-    height: 7%;
-    background-color: rgb(177, 0, 0);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-}
 .arrow-h:hover{
     cursor: pointer;
     opacity: 75%;
@@ -355,4 +357,29 @@ Tapaderas de la pokedex
     font-size: 105%;
     padding-left: 1%;
     padding-right: 1%;
+}
+.move:hover{
+    opacity: 60%;
+    cursor: pointer;
+}
+.move:active{
+    cursor: default;
+    opacity: 80%;
+}
+
+.move-info{
+    position: fixed;
+    top: 51.3020%;
+    left: 56.1%;
+    width: 46%;
+    height: 44%;
+    background-image: url('../img/HG_summary_2_desc.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-left: 2.5%;
+    overflow: scroll;
+}
+.move-info-c{
+    width: 100%;
+    height: 100%;
 }

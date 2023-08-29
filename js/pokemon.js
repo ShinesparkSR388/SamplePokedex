@@ -1,5 +1,8 @@
 //Elemento pokemon
 const pokemon = function(data){
+    /**
+     * Asignacion de atributos de el modelo pokemon
+     */
     const id = data.id;
     const name = data.name;
     const height = data.height;
@@ -12,8 +15,10 @@ const pokemon = function(data){
     let secondary_type = null;
     const order = data.order;
     const exp_base = data.base_experience;
+    const mini_png = data.sprites.versions["generation-vii"].icons.front_default;
 
     const items = data.held_items[0];
+    //Se obtiene una posible segunda habilidad
     try{
         secondary_type = data.types[1].type.name;
     }catch(err){
@@ -33,17 +38,18 @@ const pokemon = function(data){
     data.moves.forEach(item => {
         moves.push(item.move.name);
     });
-    return Object.assign({id, name, height, weight, front_image, primary_type, secondary_type, front_gif, back_gif, items, order, exp_base, stats, hab_1, hab_2, moves});
+    return Object.assign({id, name, height, weight, front_image, primary_type, secondary_type, front_gif, back_gif, items, order, exp_base, stats, hab_1, hab_2, moves, mini_png});
 }
 /**
  * Modelo adicional para manejar la estructura de los movimientos por pokemon.
+ * de entrada una promesa ya resuelta como objeto
  */
 const move = function(obj){
     const name = obj.name;
     const type = obj.type.name;
     const pp = obj.pp;
     const dm_class = obj.damage_class.name;
-    const acuracy = obj.acuracy;
+    const acuracy = obj.accuracy;
     const power = obj.power;
     let description = "---";
     try{
@@ -59,8 +65,11 @@ const move = function(obj){
  * Aqui se define la estructura de la pokedex
  */
 const pokedex = function(){
+    /**
+     * Algunos datos para funcionamiento general
+     */
     const max_id_count = 150;
-    const id_increment = 20;
+    const id_increment = 200;
     let id_count = 0;
     let poke_list = [];
     let last_type = "--";
@@ -69,12 +78,18 @@ const pokedex = function(){
      * Utilidades para modal de vista de pokedex
      */
     const modal_pokedex = function(div_item, poke_item){
+        /**
+         * se ingresa un item de targeta basica construida para asignar evento de animaciones y demas
+         */
         const modal_ = document.querySelectorAll('[btn-close]');
         /**
          * funcion para despliege de pokedex
          */
         div_item.addEventListener('click',function(){
-            //EFECTOS DE LA POKEDEX
+            /**
+             * EFECTOS DE LA POKEDEX
+             * asignacion de clases con transiciones por tiempos
+             * */
             const modal = document.querySelector('[sumary]');
             const img_ = document.querySelector('[img-sumary-type]');
             const cover_l = document.querySelector('[cover-l]');
@@ -103,25 +118,28 @@ const pokedex = function(){
             },300);
             /**
              * A partir de aqui se deberan cargar los datos a la pokedex en el DOM
+             * de las targetas 1 y 2 para los datos completos
              
             */
             //PRIMERA TARGETA!!!
-
+            //cargar objetos del dom
             const img_sumary = document.querySelector('[img-sumary-type]');
             const sumary_1 = document.querySelector('[sumary-1]');
             const sumary_2 = document.querySelector('[sumary-2]');
             const name_dex = document.querySelector('[name-dex]');
             const img_dex = document.querySelector('[img-dex]');
             const item_dex = document.querySelector('[item-dex]');
+            const item_dex2 = document.querySelector('[item-dex2]');
             const about_dex = document.querySelector('[about-dex]');
             const no_dex = document.querySelector('[no-dex]');
             const name2_dex = document.querySelector('[name2-dex]');
             const type_dex = document.querySelector('[type-dex]');
             const ot_dex = document.querySelector('[type2-dex]');
             const id_dex = document.querySelector('[id-dex]');
-            const exp = document.querySelector('[xp]');
+            const exp = document.querySelector('[expp]');
             const next_dex = document.querySelector('[next-dex]');
             const btn_next2 = document.querySelector('[btn-sumary2]');
+            //Se preparan los estados de las targetas
             btn_next2.addEventListener('click', function(){
                 sumary_1.setAttribute("hidden", "");
                 sumary_2.removeAttribute("hidden");
@@ -130,7 +148,10 @@ const pokedex = function(){
             btn_next.addEventListener('click', function(){
                 sumary_2.setAttribute("hidden", "");
                 sumary_1.removeAttribute("hidden");
-            })
+            });
+            /**
+             * Asignacion de datos para la primera targeta a partir de los datos de un objeto pokemon
+             */
             img_sumary.classList.remove(last_type);
             last_type = "bg-target-" + poke_item.primary_type + "";
             img_sumary.classList.add(last_type);
@@ -138,7 +159,6 @@ const pokedex = function(){
             sumary_1.removeAttribute("hidden");
             name_dex.textContent = poke_item.name;
             img_dex.setAttribute("src", poke_item.front_gif);
-            item_dex.textContent = poke_item.items;
             no_dex.textContent = poke_item.order;
             name2_dex.textContent = poke_item.name;
             type_dex.textContent = poke_item.primary_type;
@@ -149,18 +169,31 @@ const pokedex = function(){
             }
             ot_dex.setAttribute("class", "tag-type m-0 p-0 h-5 w-5 line-height-0 text-light type-" + poke_item.secondary_type + " bg-target-" + poke_item.secondary_type + "");
             id_dex.textContent = poke_item.weight + ".00 kg";
-            exp.textContent = poke_list.exp_base + "";
+            exp.textContent = poke_item.exp_base + ' ';
             console.log
             next_dex.textContent = "???";
+
+            const find_ = document.querySelector('[find-it]');
+            async function about_dex_(name, dom_obj, place2, happ,happ2){
+                const response = await fetch('https://pokeapi.co/api/v2/pokemon-species/' + name + '/');
+                const data = await response.json();
+
+                dom_obj.textContent = data.flavor_text_entries[0].flavor_text;
+                place2.textContent = '-You can find it in ' + data.habitat.name;
+                happ.textContent = data.base_happiness;
+                happ2.textContent = data.base_happiness;
+            }
+            about_dex_(poke_item.name, about_dex, find_, item_dex, item_dex2);
             /**
              * SEGUNDA TARGETA
              */
+
+            const info_move = document.querySelector('[info-move]');
+            info_move.setAttribute('hidden', '');
             const name_dex2 = document.querySelector('[name-dex2]');
             const img_dex2 = document.querySelector('[img-dex2]');
-            const item_dex2 = document.querySelector('[item-dex2]');
             name_dex2.textContent = poke_item.name;
             img_dex2.setAttribute("src", poke_item.front_gif);
-            item_dex2.textContent = poke_item.items;
             /**Stats */
             const hp = document.querySelector('[hp]');
             const atk = document.querySelector('[atk]');
@@ -182,6 +215,9 @@ const pokedex = function(){
             const hab_r = document.querySelector('[habiliti-r]');
             const hab_description = document.querySelector('[habiliti-description]');
             hab.textContent = poke_item.hab_1;
+            /**
+             * obtencion de datos mas detallados de habilidades para colocar la descripcion
+             */
             async function fetchHab(hab__) {
                 const response = await fetch('https://pokeapi.co/api/v2/ability/' + hab__ + '/');
                 
@@ -192,6 +228,7 @@ const pokedex = function(){
                     hab_description.textContent = data.effect_entries[1].short_effect;
                 }
             }
+            //llamada
             fetchHab(poke_item.hab_1);
 
             hab_l.addEventListener('click',function(){
@@ -212,44 +249,81 @@ const pokedex = function(){
              * aqui usamos la instancia de movimientos junto a una funcion recursiva para
              * crear todos los movimientos junto con sus eventos.
              */
-            async function set_moves(moves_, cont_){
+            async function set_moves(moves_, cont_, mini){
                 if(moves_.length >= cont_){
                     const response = await fetch('https://pokeapi.co/api/v2/move/' + moves_[cont_-1] + '/');
                     const data = await response.json();
                     const move_ = new move(data);
                     cont_ = cont_ + 1;
-
+                    /**
+                     * una vez tenemos los datos de el presente movimiento creamos elementos
+                     * para agregar a una lista
+                     */
                     const cont_moves = document.querySelector('[cont-moves]');
                     const tagg = document.createElement('spam');
                     const new_move = document.createElement('div');
                     const name__ = document.createElement('div');
                     const pp = document.createElement('div');
                     const div_1 = document.createElement('div');
-                    div_1.setAttribute('class', ' line-height-0 d-flex flex-row justifi-content-center align-items-center m-0 p-0')
+                    div_1.setAttribute('class', ' line-height-0 m-0 p-0 h-45')
                     const div_2 = document.createElement('div');
-                    div_2.setAttribute('class', ' line-height-0 d-flex justifi-content-end align-items-center  m-0 p-0')
-                    pp.setAttribute('class','line-height-0 ms-5 ps-5');
+                    div_2.setAttribute('class', ' line-height-0 d-flex mt-1 justifi-content-end align-items-end  m-0 p-0')
+                    pp.setAttribute('class','line-height-0 ms-5 ps-5 fs-2');
                     pp.textContent = 'PP' + move_.pp;
-                    tagg.setAttribute("class", "tag-type m-0 p-0 h-75 w-7 line-height-0 text-light type-" + move_.type + " bg-target-" + move_.type + "");
+                    tagg.setAttribute("class", "fs-3 d-inline tag-type m-0 ps-2 pe-2 line-height-0 text-light type-" + move_.type + " bg-target-" + move_.type + " h-75 w-3 ");
                     tagg.textContent = move_.type;
-                    name__.textContent = move_.name;
-                    name__.setAttribute('class', 'pe-4 ps-4');
+                    name__.textContent = move_.name.replace('-', ' ');
+                    name__.setAttribute('class', 'pe-4 ps-4  fs-2 d-inline ');
                     new_move.setAttribute('class', 'move');
 
                     div_1.appendChild(tagg);
                     div_1.appendChild(name__);
                     div_2.appendChild(pp);
-                    new_move.appendChild(div_1)
-                    new_move.appendChild(div_2)
-                    cont_moves.appendChild(new_move);
+                    new_move.appendChild(div_1);
+                    new_move.appendChild(div_2);
+                    /**
+                     * funcion para aplicar evento para mostrar informacion de ataque
+                     */
 
-                    set_moves(moves_, cont_);
+                    new_move.addEventListener('click', function(){
+                        /**
+                         * consulta de objetos ya creados y asignacion de datos del dicho movimiento
+                         */
+                        const info_move = document.querySelector('[info-move]');
+                        const mini_img = document.querySelector('[mini-img]');
+                        const type_info = document.querySelector('[type-info]');
+                        const cat = document.querySelector('[cat]');
+                        const pow = document.querySelector('[pow]');
+                        const acc = document.querySelector('[acc]');
+                        const desc_info = document.querySelector('[desc-info]');
+                        info_move.removeAttribute('hidden');
+                        mini_img.setAttribute('src', mini);
+                        type_info.setAttribute('class', 'tag-type m-0 p-0 line-height-0 h-65 text-light type-' + move_.type + ' bg-target-' + move_.type + '')
+                        type_info.textContent = move_.type;
+                        cat.textContent = move_.dm_class;
+                        pow.textContent = move_.power;
+                        acc.textContent = move_.acuracy;
+                        if(pow.textContent == ""){
+                            pow.textContent = "---";
+                        }
+                        if(acc.textContent == ""){
+                            acc.textContent = "---";
+                        }
+                        desc_info.textContent = move_.description;
+                    });
+                    cont_moves.appendChild(new_move);
+                    /**
+                     * llamada recursiva a la funcion asincrona
+                     */
+                    set_moves(moves_, cont_, mini);
                 }else{
                 }
             }
             const cont_moves = document.querySelector('[cont-moves]');
+            //limpia la lista de moves
             cont_moves.innerHTML = '';
-            set_moves(poke_item.moves, 1);
+            //para empezar a agregar los nuevos requeridos
+            set_moves(poke_item.moves, 1, poke_item.mini_png);
 
         });
         /**
@@ -258,6 +332,9 @@ const pokedex = function(){
         modal_.forEach(item => {
                 
             item.addEventListener('click', function(){
+                /**
+                 * asignacion de clases con transiciones para ocultar la vista
+                 */
                 const modal = document.querySelector('[sumary]');
                 const img_ = document.querySelector('[img-sumary-type]');
                 const cover_l = document.querySelector('[cover-l]');
@@ -287,10 +364,13 @@ const pokedex = function(){
         });
         return div_item;
     }
-
+    /**
+     * funcion a partir de una lista de objetos pokemon para la creacion de targetas basicas
+     */
     const draw_poke_list = function(new_list){
         const container = document.querySelector('[cat-alog]');
         this.id_count = this.id_count + this.id_increment;
+        /**recorremos la lista creando objetos */
         new_list.forEach(item => {
             let tags = ` <div class="tag-type col-12 type-` + item.primary_type +`">` + item.primary_type +`</div>
             <div class="tag-type col-12 type-` + item.secondary_type +`">` + item.secondary_type +`</div>`;
@@ -323,9 +403,13 @@ const pokedex = function(){
             let fs = document.createElement('div');
             fs.className = "col-2 bg-target-" + item.primary_type + " rounded-4 m-3 bg-target ";
             fs.innerHTML = card.innerHTML;
+            /**
+             * aqui llamamos a la funcion de modal para asignar a dicho objeto los eventos
+             * para mostrar los datos al hacer click en las targetas basicas;
+             */
             fs.setAttribute('cards', ' ');
             fs = modal_pokedex(fs, item);
-            
+            //y lo agregamos al contenedor
             container.appendChild(fs);
         });
         /**
@@ -345,6 +429,9 @@ const pokedex = function(){
             draw_poke_list(new_list);
             return
         }
+        /**
+         *funcion recursiva para la obtencion de los objetos pokemon segun la cantidad indicada
+         */
         fetch("https://pokeapi.co/api/v2/pokemon/"+ amount +"/").then(Response => Response.json()).then(function(data){  
             new_list.push(new pokemon(data));
             get_poke_list(amount+1, new_list);
@@ -352,6 +439,12 @@ const pokedex = function(){
         }).catch(function(err){ console.log(err)});
 
     }
+    /**
+     * 
+     * Lo primero en ejecutarse 
+     * ademas de ser unica funcion publica de la clase funcional pokedex
+     * esta solamente inicia la funcion recursiva para obtener la lista de pokemon
+     */
     const dibujar_pokedex = function(){
         if(max_id_count > id_count){
             console.log(id_count);

@@ -8,6 +8,9 @@
 .line-height-1{
     line-height: 98%;
 }
+.line-height-2{
+    line-height: 99%;
+}
 
 @font-face {
     font-family: poke_font;
