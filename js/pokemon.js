@@ -367,11 +367,10 @@ const pokedex = function(){
     /**
      * funcion a partir de una lista de objetos pokemon para la creacion de targetas basicas
      */
-    const draw_poke_list = function(new_list){
+    const draw_poke_list = function(item){
         const container = document.querySelector('[cat-alog]');
         this.id_count = this.id_count + this.id_increment;
         /**recorremos la lista creando objetos */
-        new_list.forEach(item => {
             let tags = ` <div class="tag-type col-12 type-` + item.primary_type +`">` + item.primary_type +`</div>
             <div class="tag-type col-12 type-` + item.secondary_type +`">` + item.secondary_type +`</div>`;
             if(item.secondary_type == null){
@@ -411,7 +410,6 @@ const pokedex = function(){
             fs = modal_pokedex(fs, item);
             //y lo agregamos al contenedor
             container.appendChild(fs);
-        });
         /**
         * A partir de este punto se empezaran a insertar
         *  la nueva cantidad de id_increment a la vista
@@ -419,22 +417,21 @@ const pokedex = function(){
         */
         return
     }
-    const get_poke_list = function(amount, new_list){
+    const get_poke_list = function(amount){
         /**
          * Funcion recursiva para crear una lista de pokemon
          * hasta cumplir con la cantidad de incremento
          */
         if(amount == id_count+id_increment+1){
             id_count = id_count + id_increment;
-            draw_poke_list(new_list);
             return
         }
         /**
          *funcion recursiva para la obtencion de los objetos pokemon segun la cantidad indicada
          */
         fetch("https://pokeapi.co/api/v2/pokemon/"+ amount +"/").then(Response => Response.json()).then(function(data){  
-            new_list.push(new pokemon(data));
-            get_poke_list(amount+1, new_list);
+            draw_poke_list(new pokemon(data));
+            get_poke_list(amount+1);
             return
         }).catch(function(err){ console.log(err)});
 
@@ -448,7 +445,7 @@ const pokedex = function(){
     const dibujar_pokedex = function(){
         if(max_id_count > id_count){
             console.log(id_count);
-            get_poke_list(id_count+1, []);
+            get_poke_list(id_count+1);
             return true;
         }else{
             return false;
